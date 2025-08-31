@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Card, Form, Button, Alert, Row, Col, Badge } from "react-bootstrap";
 import { validateFile } from "../utils/fileUtils";
-import useReportConfig from "../hooks/useReportConfig";
 
 const FileUpload = ({ onUpload, uploadStatus, isUploading }) => {
 	const [selectedFile, setSelectedFile] = useState(null);
@@ -10,16 +9,24 @@ const FileUpload = ({ onUpload, uploadStatus, isUploading }) => {
 	const [selectedGroup, setSelectedGroup] = useState("");
 	const [selectedReport, setSelectedReport] = useState("");
 	const [rememberGroup, setRememberGroup] = useState(false);
-	
-	// 使用自訂 Hook 獲取後端配置
-	const { reportConfig: apiReportConfig, dataSourceConfig: apiDataSourceConfig, loading: configLoading, error: configError } = useReportConfig();
 
-	// 使用從後端獲取的配置，如果尚未載入則使用空物件
-	const reportConfig = apiReportConfig?.success ? apiReportConfig.reportConfig : {};
-	const dataSourceConfig = apiDataSourceConfig?.success ? apiDataSourceConfig.dataSourceConfig : {};
+	// 組別與報表配置
+	const reportConfig = {
+		帳一組: ["應收帳款明細表", "應付帳款明細表", "會計科目餘額表", "試算表"],
+		帳二組: [
+			"固定資產明細表",
+			"折舊計算表",
+			"預付費用明細表",
+			"遞延收入明細表",
+		],
+		股務組: ["股東名冊", "持股分析表", "股利發放明細", "股權變動表"],
+		稅務組: ["營業稅申報表", "所得稅計算表", "扣繳憑單明細", "稅務調節表"],
+		管會組: ["管理會計報表", "成本分析表", "預算執行表", "績效分析報告"],
+		RPA組: ["RPA流程報告", "自動化執行記錄", "系統整合報表", "效率分析報告"],
+	};
 
-	// 原先的硬編碼配置（備用）
-	const fallbackDataSourceConfig = {
+	// 資料來源配置
+	const dataSourceConfig = {
 		// 帳一組報表
 		應收帳款明細表: [
 			"客戶基本資料檔",
@@ -317,33 +324,15 @@ const FileUpload = ({ onUpload, uploadStatus, isUploading }) => {
 						</Form.Group>
 					</Col>
 					
-					{/* 後端配置資訊顯示 */}
+					{/* 配置資訊顯示 */}
 					<Col md={4}>
-						{configLoading && (
-							<div className='text-center text-muted'>
-								<i className='bi bi-hourglass-split me-2'></i>
-								載入配置中...
-							</div>
-						)}
-						
-						{configError && (
-							<Alert variant='warning' className='mb-0 py-2'>
-								<small>
-									<i className='bi bi-exclamation-triangle me-1'></i>
-									配置載入失敗: {configError}
-								</small>
-							</Alert>
-						)}
-						
-						{apiReportConfig?.success && apiDataSourceConfig?.success && (
-							<Alert variant='success' className='mb-0 py-2'>
-								<small>
-									<i className='bi bi-check-circle me-1'></i>
-									配置載入成功<br/>
-									組別: {Object.keys(reportConfig).length} 個
-								</small>
-							</Alert>
-						)}
+						<Alert variant='success' className='mb-0 py-2'>
+							<small>
+								<i className='bi bi-check-circle me-1'></i>
+								配置已載入<br/>
+								組別: {Object.keys(reportConfig).length} 個
+							</small>
+						</Alert>
 					</Col>
 				</Row>
 
@@ -359,7 +348,7 @@ const FileUpload = ({ onUpload, uploadStatus, isUploading }) => {
 								</h6>
 							</Card.Header>
 							<Card.Body>
-								{selectedReport && (dataSourceConfig[selectedReport] || fallbackDataSourceConfig[selectedReport]) ? (
+								{selectedReport && dataSourceConfig[selectedReport] ? (
 									<>
 										<div className='mb-3'>
 											<Badge bg='info' className='fs-6 px-3 py-2'>
@@ -367,7 +356,7 @@ const FileUpload = ({ onUpload, uploadStatus, isUploading }) => {
 											</Badge>
 										</div>
 										<div className='data-sources-list'>
-											{(dataSourceConfig[selectedReport] || fallbackDataSourceConfig[selectedReport] || []).map((source, index) => (
+											{(dataSourceConfig[selectedReport] || []).map((source, index) => (
 												<div
 													key={index}
 													className='data-source-item d-flex align-items-center mb-2 p-2 bg-light rounded'>
