@@ -1,0 +1,100 @@
+// Dashboard 頁面樣式
+
+.dashboard {
+  @include fade-in;
+  
+  // 頁面標題
+  .page-title {
+    margin-bottom: spacer(4);
+    color: $dark-color;
+    
+    .bi {
+      color: $primary-color;
+      margin-right: spacer(2);
+    }
+  }
+  
+  // 統計卡片區域
+  .stats-section {
+    margin-bottom: spacer(4);
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: spacer(3);
+      
+      @include media-breakpoint-down(sm) {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .stat-card {
+      @include card-style;
+      text-align: center;
+      padding: spacer(3);
+      
+      .stat-icon {
+        font-size: 2rem;
+        color: $primary-color;
+        margin-bottom: spacer(2);
+      }
+      
+      .stat-number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: $dark-color;
+        margin-bottom: spacer(1);
+      }
+      
+      .stat-label {
+        color: rgba($dark-color, 0.6);
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+    }
+  }
+  
+  // 主要內容區域
+  .main-content {
+    display: grid;
+    gap: spacer(4);
+    
+    @include media-breakpoint-up(lg) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  // 快速操作區域
+  .quick-actions {
+    .action-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: spacer(2);
+      
+      .action-btn {
+        @include card-style;
+        @include button-hover-effect;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: spacer(3);
+        text-decoration: none;
+        color: inherit;
+        border: none;
+        background: white;
+        cursor: pointer;
+        
+        .action-icon {
+          font-size: 2rem;
+          color: $primary-color;
+          margin-bottom: spacer(2);
+        }
+        
+        .action-label {
+          font-weight: 500;
+          font-size: 0.875rem;
+        }
+      }
+    }
+  }
+}

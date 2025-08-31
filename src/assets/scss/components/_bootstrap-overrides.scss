@@ -1,0 +1,36 @@
+.btn {
+  border-radius: $border-radius;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.card {
+  border-radius: $border-radius-lg;
+  border: none;
+  box-shadow: $box-shadow;
+}
+
+.form-control,
+.form-select {
+  border-radius: $border-radius;
+}
+
+.badge {
+  font-weight: 500;
+  font-size: 0.75em;
+}
+
+// Toast 自定義樣式
+.toast {
+  box-shadow: $box-shadow-hover;
+}
+
+// 圖標對齊
+.bi {
+  vertical-align: -0.125em;
+}
+
+// 應用程式特定動畫
+.app-fade-in {
+  @include fade-in(0.5s);
+}

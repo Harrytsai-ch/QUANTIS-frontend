@@ -1,0 +1,100 @@
+// 按鈕組件樣式
+
+.btn {
+  @include button-hover-effect;
+  border-radius: $border-radius;
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+  
+  // 圖標對齊
+  .bi {
+    vertical-align: -0.125em;
+  }
+  
+  // 載入狀態
+  .spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+    margin-right: spacer(1);
+  }
+  
+  // 禁用狀態
+  &:disabled,
+  &.disabled {
+    transform: none !important;
+    box-shadow: none !important;
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+// 下載按鈕
+.download-btn {
+  background-color: $success-color;
+  border-color: $success-color;
+  color: white;
+  
+  &:hover {
+    background-color: shade($success-color, 15%);
+    border-color: shade($success-color, 20%);
+  }
+  
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba($success-color, 0.25);
+  }
+}
+
+// 上傳按鈕
+.upload-btn {
+  background-color: $primary-color;
+  border-color: $primary-color;
+  color: white;
+  
+  &:hover {
+    background-color: shade($primary-color, 15%);
+    border-color: shade($primary-color, 20%);
+  }
+  
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
+  }
+}
+
+// 危險按鈕
+.btn-danger {
+  &:hover {
+    background-color: shade($danger-color, 15%);
+    border-color: shade($danger-color, 20%);
+  }
+  
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba($danger-color, 0.25);
+  }
+}
+
+// 按鈕群組
+.btn-group {
+  .btn + .btn {
+    margin-left: spacer(2);
+  }
+}
+
+// 響應式按鈕
+@include media-breakpoint-down(md) {
+  .btn-lg {
+    padding: spacer(2) spacer(3);
+    font-size: 1rem;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .btn {
+    width: 100%;
+    margin-bottom: spacer(2);
+  }
+  
+  .btn-group .btn {
+    width: auto;
+  }
+}

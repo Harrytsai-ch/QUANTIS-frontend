@@ -1,0 +1,71 @@
+// 主要佈局樣式
+
+.App {
+  min-height: 100vh;
+  background-color: $light-color;
+}
+
+// 工具標題區塊樣式
+.tool-header-section {
+  border-radius: 12px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  
+  h1 {
+    color: #2c3e50;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    
+    i {
+      color: #007bff;
+      font-size: 0.9em;
+    }
+  }
+  
+  .lead {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+// 主容器
+.main-container {
+  padding-top: spacer(4);
+  padding-bottom: spacer(4);
+}
+
+
+// 載入狀態佈局
+.app-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  
+  .loading-spinner {
+    @include loading-spinner(3rem);
+  }
+}
+
+// 容器間距
+.container {
+  @include media-breakpoint-up(lg) {
+    max-width: 1200px;
+  }
+}
+
+// 響應式間距調整
+@include media-breakpoint-down(md) {
+  .main-container {
+    padding-top: spacer(3);
+    padding-bottom: spacer(3);
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .main-container {
+    padding-top: spacer(2);
+    padding-bottom: spacer(2);
+  }
+}

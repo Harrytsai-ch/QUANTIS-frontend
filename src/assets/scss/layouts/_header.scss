@@ -1,0 +1,244 @@
+// Header 佈局樣式 - 低調奢華風格
+
+.navbar {
+  border-radius: 0;
+  box-shadow: 0 3px 30px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, 
+    #8B0000 0%,    // 深紅色
+    #A0282C 25%,   // 暗紅
+    #B22222 50%,   // 火磚紅
+    #DC143C 75%,   // 深紅
+    #B22222 100%   // 回到火磚紅
+  ) !important;
+  border-bottom: 1px solid rgba(218, 165, 32, 0.3); // 金色細線
+  
+  // Bootstrap navbar 預設行為，移除過度自定義
+  .container {
+    position: relative;
+  }
+  
+  // 確保下拉選單可以正常顯示
+  .navbar-nav {
+    position: static;
+    
+    .nav-item.dropdown {
+      position: relative;
+      
+      &.show .dropdown-menu {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        z-index: 1055;
+      }
+    }
+  }
+  
+  // 內光效果
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(218, 165, 32, 0.5) 50%, 
+      transparent 100%
+    );
+  }
+  
+  .navbar-brand {
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #F8F8F2 !important; // 珍珠白
+    letter-spacing: 2px;
+    font-family: 'Playfair Display', 'Times New Roman', serif;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    
+    &:hover, &:focus {
+      color: #F8F8F2 !important;
+      text-decoration: none !important;
+    }
+    
+    .bi {
+      vertical-align: -0.125em;
+      color: #C9B037; // 香檳金
+      margin-right: 18px;
+      font-size: 1.4em;
+      transform: rotate(-5deg);
+    }
+  }
+  
+  // 財務部門下拉選單樣式 - 無邊框優雅設計
+  .dropdown-toggle {
+    background: transparent !important;
+    border: none !important;
+    color: #F8F8F2 !important; // 珍珠白
+    font-weight: 500;
+    font-size: 1.05rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    letter-spacing: 0.5px;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    
+    &::before {
+      content: '◊';
+      margin-right: 12px;
+      color: #C9B037; // 香檳金
+      font-size: 1.1em;
+      transition: all 0.3s ease;
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #C9B037, transparent);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateX(-50%);
+    }
+    
+    &:hover, &:focus {
+      background: rgba(201, 176, 55, 0.08) !important;
+      color: #F8F8F2 !important;
+      text-decoration: none !important;
+      
+      &::before {
+        color: #F5F5DC;
+        transform: scale(1.1) rotate(45deg);
+      }
+      
+      &::after {
+        width: 80%;
+      }
+    }
+    
+    &.show {
+      background: rgba(201, 176, 55, 0.12) !important;
+      color: #F8F8F2 !important;
+      
+      &::after {
+        width: 100%;
+        background: linear-gradient(90deg, #C9B037, #F5F5DC, #C9B037);
+      }
+    }
+    
+    // 移除Bootstrap默認樣式
+    &:focus {
+      box-shadow: none !important;
+      outline: none !important;
+    }
+    
+    // 移除下拉箭頭的底線
+    &:after {
+      border: none !important;
+    }
+  }
+  
+  // 下拉選單內容樣式 - 現代卡片風格
+  .dropdown-menu {
+    background: #ffffff;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 
+      0 20px 60px rgba(0, 0, 0, 0.12),
+      0 8px 25px rgba(0, 0, 0, 0.08),
+      0 0 0 1px rgba(201, 176, 55, 0.15);
+    z-index: 1055;
+    padding: 0.8rem;
+    min-width: 280px;
+    position: absolute;
+    right: 0;
+    left: auto;
+    
+    .dropdown-item {
+      color: #2c3e50;
+      font-weight: 500;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      margin: 0.2rem 0;
+      font-size: 0.95rem;
+      letter-spacing: 0.2px;
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      position: relative;
+      display: flex;
+      align-items: center;
+      border: none;
+      text-decoration: none;
+      overflow: hidden;
+      
+      &::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #C9B037, #B8860B);
+        margin-right: 14px;
+        flex-shrink: 0;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0.7;
+      }
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #C9B037, transparent);
+        transform: translateX(-50%);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      &:hover, &:focus {
+        background: linear-gradient(135deg, 
+          rgba(201, 176, 55, 0.06) 0%,
+          rgba(201, 176, 55, 0.02) 100%
+        );
+        color: #1a202c;
+        text-decoration: none;
+        
+        &::before {
+          transform: scale(1.4);
+          opacity: 1;
+          background: linear-gradient(135deg, #F5F5DC, #C9B037);
+          box-shadow: 0 0 12px rgba(201, 176, 55, 0.4);
+        }
+        
+        &::after {
+          width: 80%;
+        }
+      }
+      
+      &:active {
+        background: linear-gradient(135deg, 
+          rgba(201, 176, 55, 0.1) 0%,
+          rgba(201, 176, 55, 0.04) 100%
+        );
+        
+        &::after {
+          width: 100%;
+          background: linear-gradient(90deg, #C9B037, #F5F5DC, #C9B037);
+        }
+      }
+    }
+  }
+}
+
+
+// Header 響應式調整
+@include media-breakpoint-down(sm) {
+  .navbar-brand {
+    font-size: 1.1rem;
+  }
+}

@@ -1,0 +1,133 @@
+// 卡片組件樣式
+
+.card {
+  @include card-style;
+  
+  .card-header {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    padding: spacer(3);
+    
+    h5, h6 {
+      margin-bottom: 0;
+      font-weight: 600;
+      
+      .bi {
+        color: $primary-color;
+        margin-right: spacer(2);
+      }
+    }
+  }
+  
+  .card-body {
+    padding: spacer(3);
+    
+    @include media-breakpoint-down(md) {
+      padding: spacer(2);
+    }
+  }
+}
+
+// 任務卡片
+.task-item {
+  @include card-style;
+  border-left: 4px solid transparent;
+  transition: border-color 0.3s ease;
+  margin-bottom: spacer(3);
+  
+  &[data-status="processing"] {
+    border-left-color: $primary-color;
+  }
+  
+  &[data-status="completed"] {
+    border-left-color: $success-color;
+  }
+  
+  &[data-status="error"] {
+    border-left-color: $danger-color;
+  }
+  
+  .task-info {
+    h6 {
+      margin-bottom: spacer(2);
+      
+      .bi {
+        color: rgba($dark-color, 0.6);
+      }
+    }
+    
+    .text-muted {
+      font-size: 0.875rem;
+      
+      code {
+        background-color: rgba($dark-color, 0.1);
+        color: $dark-color;
+      }
+    }
+  }
+}
+
+// 報表卡片
+.report-item {
+  @include card-style;
+  height: 100%;
+  transition: transform 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+  
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    
+    h6 {
+      .bi {
+        color: $success-color;
+      }
+    }
+    
+    .report-meta {
+      flex-grow: 1;
+      margin-bottom: spacer(3);
+      
+      .text-muted {
+        font-size: 0.875rem;
+        margin-bottom: spacer(1);
+        
+        .bi {
+          color: rgba($dark-color, 0.5);
+          margin-right: spacer(1);
+        }
+      }
+    }
+    
+    .btn {
+      margin-top: auto;
+      @include button-hover-effect;
+    }
+  }
+}
+
+// 空狀態卡片
+.empty-state {
+  text-align: center;
+  padding: spacer(5) spacer(3);
+  color: rgba($dark-color, 0.6);
+  
+  .bi {
+    font-size: 4rem;
+    opacity: 0.5;
+    margin-bottom: spacer(3);
+    display: block;
+  }
+  
+  h6 {
+    margin-bottom: spacer(2);
+  }
+  
+  p {
+    margin-bottom: 0;
+    font-size: 0.875rem;
+  }
+}

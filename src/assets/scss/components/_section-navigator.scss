@@ -1,0 +1,158 @@
+// 區塊導航器樣式
+
+.section-navigator {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1040;
+  
+  .navigator-main-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border: none;
+    background: linear-gradient(135deg, 
+      #8B0000 0%,    // 深紅色
+      #A0282C 25%,   // 暗紅
+      #B22222 50%,   // 火磚紅
+      #DC143C 75%,   // 深紅
+      #B22222 100%   // 回到火磚紅
+    );
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(135deg, 
+        #C9B037 0%, 
+        #B8860B 50%, 
+        #DAA520 100%
+      );
+    }
+    
+    i {
+      color: #F8F8F2;
+      transition: transform 0.3s ease;
+    }
+    
+    &:hover i {
+      transform: rotate(180deg);
+    }
+  }
+  
+  .navigator-menu {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    &.expanded {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .navigator-item {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      border: 2px solid rgba(201, 176, 55, 0.2);
+      background: rgba(248, 248, 242, 0.95);
+      backdrop-filter: blur(10px);
+      color: #2c3e50;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: scale(0.8);
+      opacity: 0;
+      
+      .expanded & {
+        transform: scale(1);
+        opacity: 1;
+      }
+      
+      &:hover {
+        transform: scale(1.1);
+        border-color: rgba(201, 176, 55, 0.6);
+        background: rgba(248, 248, 242, 1);
+        box-shadow: 0 8px 25px rgba(201, 176, 55, 0.2);
+        color: #1a1a2e;
+      }
+      
+      // 活躍狀態 (當前區塊)
+      &.btn-warning {
+        background: linear-gradient(135deg, 
+          #DC143C 0%,   // 深紅
+          #B22222 50%,  // 火磚紅
+          #8B0000 100%  // 深紅色
+        );
+        color: #F8F8F2;
+        border-color: #8B0000;
+        box-shadow: 0 6px 20px rgba(220, 20, 60, 0.3);
+        
+        &:hover {
+          background: linear-gradient(135deg, 
+            #FF6B6B 0%,   // 亮紅
+            #DC143C 50%,  // 深紅
+            #B22222 100%  // 火磚紅
+          );
+          color: #F8F8F2;
+        }
+      }
+      
+      i {
+        transition: transform 0.2s ease;
+      }
+      
+      &:hover i {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+// 響應式設計
+@media (max-width: 768px) {
+  .section-navigator {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    
+    .navigator-main-btn {
+      width: 50px;
+      height: 50px;
+      font-size: 1.3rem;
+    }
+    
+    .navigator-menu .navigator-item {
+      width: 45px;
+      height: 45px;
+      font-size: 1.1rem;
+    }
+  }
+}
+
+// 滾動時的優雅效果
+@media (prefers-reduced-motion: no-preference) {
+  .section-navigator {
+    .navigator-menu .navigator-item {
+      &:nth-child(1) { transition-delay: 0.05s; }
+      &:nth-child(2) { transition-delay: 0.1s; }
+      &:nth-child(3) { transition-delay: 0.15s; }
+      &:nth-child(4) { transition-delay: 0.2s; }
+    }
+  }
+}

@@ -1,0 +1,186 @@
+// 報表頁面樣式
+
+.reports-page {
+  @include fade-in;
+  
+  // 報表篩選區域
+  .reports-filters {
+    background-color: white;
+    border-radius: $border-radius-lg;
+    padding: spacer(3);
+    margin-bottom: spacer(4);
+    box-shadow: $box-shadow;
+    
+    .filter-row {
+      display: flex;
+      gap: spacer(3);
+      align-items: end;
+      
+      @include media-breakpoint-down(md) {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .filter-group {
+        flex: 1;
+        
+        &.search-group {
+          flex: 2;
+        }
+        
+        .form-label {
+          font-size: 0.875rem;
+          font-weight: 600;
+          color: $dark-color;
+          margin-bottom: spacer(1);
+        }
+      }
+      
+      .filter-actions {
+        display: flex;
+        gap: spacer(2);
+        
+        @include media-breakpoint-down(sm) {
+          justify-content: stretch;
+          
+          .btn {
+            flex: 1;
+          }
+        }
+      }
+    }
+    
+    .active-filters {
+      margin-top: spacer(3);
+      padding-top: spacer(3);
+      border-top: 1px solid rgba(0, 0, 0, 0.125);
+      
+      .filter-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: spacer(2);
+        
+        .filter-tag {
+          background-color: rgba($primary-color, 0.1);
+          color: $primary-color;
+          padding: 0.25rem spacer(2);
+          border-radius: rem(20px);
+          font-size: 0.875rem;
+          display: flex;
+          align-items: center;
+          
+          .remove-filter {
+            margin-left: spacer(1);
+            cursor: pointer;
+            opacity: 0.7;
+            
+            &:hover {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  // 報表列表
+  .reports-list {
+    @extend .card-layout;
+    
+    .list-header {
+      display: flex;
+      justify-content: between;
+      align-items: center;
+      margin-bottom: spacer(3);
+      
+      .list-title {
+        display: flex;
+        align-items: center;
+        
+        .count-badge {
+          margin-left: spacer(2);
+          background-color: rgba($dark-color, 0.1);
+          color: $dark-color;
+        }
+      }
+      
+      .list-actions {
+        .sort-dropdown {
+          .dropdown-toggle {
+            background: transparent;
+            border: 1px solid rgba(0, 0, 0, 0.125);
+            color: $dark-color;
+            
+            &:hover {
+              background-color: $light-color;
+            }
+          }
+        }
+      }
+    }
+    
+    .list-content {
+      .filter-summary {
+        background-color: rgba($info-color, 0.05);
+        border: 1px solid rgba($info-color, 0.2);
+        border-radius: $border-radius;
+        padding: spacer(2) spacer(3);
+        margin-bottom: spacer(3);
+        font-size: 0.875rem;
+        
+        .bi {
+          color: $info-color;
+          margin-right: spacer(1);
+        }
+        
+        .clear-filters {
+          color: $primary-color;
+          text-decoration: none;
+          font-weight: 500;
+          margin-left: spacer(2);
+          
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+  
+  // 報表項目懸浮效果
+  .report-item {
+    transition: all 0.2s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+  }
+  
+  // 載入更多按鈕
+  .load-more {
+    text-align: center;
+    margin-top: spacer(4);
+    
+    .btn-load-more {
+      @include button-hover-effect;
+      padding: spacer(2) spacer(4);
+      font-weight: 500;
+      
+      .spinner-border-sm {
+        display: none;
+        margin-right: spacer(2);
+      }
+      
+      &.loading {
+        .spinner-border-sm {
+          display: inline-block;
+        }
+        
+        .load-text {
+          display: none;
+        }
+      }
+    }
+  }
+}

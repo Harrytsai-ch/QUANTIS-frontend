@@ -1,0 +1,152 @@
+// 上傳頁面樣式
+
+.upload-page {
+  @include fade-in;
+  
+  // 上傳區域
+  .upload-section {
+    @extend .card-layout;
+    
+    .upload-header {
+      display: flex;
+      align-items: center;
+      justify-content: between;
+      margin-bottom: spacer(3);
+      
+      h5 {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        
+        .bi {
+          color: $primary-color;
+        }
+      }
+      
+      .upload-info {
+        font-size: 0.875rem;
+        color: rgba($dark-color, 0.6);
+        text-align: right;
+        
+        @include media-breakpoint-down(sm) {
+          text-align: left;
+          margin-top: spacer(2);
+        }
+      }
+    }
+  }
+  
+  // 處理中任務區域
+  .processing-section {
+    @extend .card-layout;
+    
+    .processing-header {
+      display: flex;
+      align-items: center;
+      justify-content: between;
+      margin-bottom: spacer(3);
+      
+      .task-count {
+        background-color: $primary-color;
+        color: white;
+        border-radius: 50%;
+        width: 1.5rem;
+        height: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+    }
+    
+    .processing-list {
+      .processing-item {
+        @include card-style;
+        margin-bottom: spacer(3);
+        padding: spacer(3);
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+        
+        .processing-header {
+          display: flex;
+          align-items: flex-start;
+          justify-content: between;
+          margin-bottom: spacer(2);
+          
+          .file-name {
+            font-weight: 600;
+            color: $dark-color;
+            
+            .bi {
+              color: rgba($dark-color, 0.6);
+              margin-right: spacer(1);
+            }
+          }
+          
+          .status-badge {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            
+            &.processing {
+              background-color: rgba($primary-color, 0.1);
+              color: $primary-color;
+            }
+            
+            &.completed {
+              background-color: rgba($success-color, 0.1);
+              color: $success-color;
+            }
+            
+            &.error {
+              background-color: rgba($danger-color, 0.1);
+              color: $danger-color;
+            }
+          }
+        }
+        
+        .processing-meta {
+          font-size: 0.875rem;
+          color: rgba($dark-color, 0.6);
+          margin-bottom: spacer(2);
+          
+          .meta-item {
+            margin-bottom: spacer(1);
+            
+            &:last-child {
+              margin-bottom: 0;
+            }
+            
+            code {
+              font-size: 0.75rem;
+            }
+          }
+        }
+        
+        .processing-progress {
+          margin-bottom: spacer(2);
+        }
+        
+        .processing-actions {
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
+    }
+  }
+  
+  // 空狀態
+  .empty-processing {
+    text-align: center;
+    padding: spacer(4);
+    color: rgba($dark-color, 0.6);
+    
+    .empty-icon {
+      font-size: 3rem;
+      opacity: 0.5;
+      margin-bottom: spacer(3);
+    }
+  }
+}

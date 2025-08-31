@@ -1,0 +1,32 @@
+// 主要 SCSS 入口文件
+
+// 第三方庫樣式 (必須最先載入)
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+// Utils - 變數、函數、混入
+@import 'utils/variables';
+@import 'utils/functions';
+@import 'utils/mixins';
+@import 'utils/base';
+
+// Layouts - 佈局相關
+@import 'layouts/header';
+@import 'layouts/main';
+@import 'layouts/grid';
+
+// Components - 組件樣式
+@import 'components/upload';
+@import 'components/cards';
+@import 'components/buttons';
+@import 'components/forms';
+@import 'components/progress';
+@import 'components/section-navigator';
+
+// Pages - 頁面特定樣式
+@import 'pages/dashboard';
+@import 'pages/upload';
+@import 'pages/reports';
+
+// Bootstrap 覆蓋和增強 (最後載入)
+@import 'components/bootstrap-overrides';

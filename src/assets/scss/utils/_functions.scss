@@ -1,0 +1,89 @@
+// SCSS 函數
+
+// 計算 rem 值
+@function rem($pixels, $base: 16px) {
+  @return $pixels / $base * 1rem;
+}
+
+// 計算 em 值
+@function em($pixels, $base: 16px) {
+  @return $pixels / $base * 1em;
+}
+
+// 顏色透明度
+@function alpha($color, $opacity) {
+  @return rgba($color, $opacity);
+}
+
+// 顏色加深
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+// 顏色變淺
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+// 獲取斷點值
+@function breakpoint($name) {
+  @return map-get($grid-breakpoints, $name);
+}
+
+// 獲取間距值
+@function spacer($key) {
+  @return map-get($spacers, $key);
+}
+
+// 字符串替換
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+  
+  @return $string;
+}
+
+// URL 編碼
+@function url-encode($string) {
+  $map: (
+    "%": "%25",
+    "<": "%3C",
+    ">": "%3E",
+    " ": "%20",
+    "!": "%21",
+    "*": "%2A",
+    "'": "%27",
+    '"': "%22",
+    "(": "%28",
+    ")": "%29",
+    ";": "%3B",
+    ":": "%3A",
+    "@": "%40",
+    "&": "%26",
+    "=": "%3D",
+    "+": "%2B",
+    "$": "%24",
+    ",": "%2C",
+    "/": "%2F",
+    "?": "%3F",
+    "#": "%23",
+    "[": "%5B",
+    "]": "%5D"
+  );
+  
+  $new: $string;
+  
+  @each $search, $replace in $map {
+    $new: str-replace($new, $search, $replace);
+  }
+  
+  @return $new;
+}
+
+// SVG URL
+@function svg-url($svg) {
+  @return url("data:image/svg+xml,#{url-encode($svg)}");
+}

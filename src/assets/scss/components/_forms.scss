@@ -1,0 +1,134 @@
+// 表單組件樣式
+
+.form-control,
+.form-select {
+  border-radius: $border-radius;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  
+  &:focus {
+    border-color: $primary-color;
+    box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
+  }
+}
+
+// 檔案輸入
+.form-control[type="file"] {
+  cursor: pointer;
+  
+  &:focus {
+    border-color: $primary-color;
+  }
+}
+
+// 輸入群組
+.input-group {
+  .input-group-text {
+    background-color: $light-color;
+    border-color: rgba(0, 0, 0, 0.125);
+    
+    .bi {
+      color: rgba($dark-color, 0.6);
+    }
+  }
+  
+  .form-control:focus {
+    border-color: $primary-color;
+    box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
+  }
+}
+
+// 搜尋框特殊樣式
+.search-input {
+  .form-control {
+    padding-left: 2.5rem;
+    
+    &::placeholder {
+      color: rgba($dark-color, 0.5);
+    }
+  }
+  
+  .input-group-text {
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    background: transparent;
+    border: none;
+    
+    .bi {
+      color: rgba($dark-color, 0.4);
+    }
+  }
+}
+
+// 表單標籤
+.form-label {
+  font-weight: 600;
+  margin-bottom: spacer(2);
+  color: $dark-color;
+}
+
+// 表單說明文字
+.form-text {
+  font-size: 0.875rem;
+  color: rgba($dark-color, 0.6);
+  margin-top: spacer(1);
+}
+
+// 驗證樣式
+.is-valid {
+  .form-control {
+    border-color: $success-color;
+    
+    &:focus {
+      border-color: $success-color;
+      box-shadow: 0 0 0 0.2rem rgba($success-color, 0.25);
+    }
+  }
+}
+
+.is-invalid {
+  .form-control {
+    border-color: $danger-color;
+    
+    &:focus {
+      border-color: $danger-color;
+      box-shadow: 0 0 0 0.2rem rgba($danger-color, 0.25);
+    }
+  }
+}
+
+.valid-feedback,
+.invalid-feedback {
+  font-size: 0.875rem;
+  margin-top: spacer(1);
+  
+  .bi {
+    margin-right: spacer(1);
+  }
+}
+
+.valid-feedback {
+  color: $success-color;
+}
+
+.invalid-feedback {
+  color: $danger-color;
+}
+
+// 響應式調整
+@include media-breakpoint-down(sm) {
+  .input-group {
+    flex-direction: column;
+    
+    .input-group-text {
+      position: relative;
+      border-bottom: none;
+      border-radius: $border-radius $border-radius 0 0;
+    }
+    
+    .form-control {
+      border-radius: 0 0 $border-radius $border-radius;
+    }
+  }
+}

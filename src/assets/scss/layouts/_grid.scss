@@ -1,0 +1,62 @@
+// Grid 佈局樣式
+
+// 報表網格
+.reports-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: spacer(3);
+  margin-top: spacer(3);
+  
+  @include media-breakpoint-down(md) {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: spacer(2);
+  }
+  
+  @include media-breakpoint-down(sm) {
+    grid-template-columns: 1fr;
+    gap: spacer(2);
+  }
+}
+
+// 彈性佈局工具
+.d-flex-responsive {
+  display: flex;
+  
+  @include media-breakpoint-down(sm) {
+    flex-direction: column;
+    gap: spacer(2);
+    
+    .text-end {
+      text-align: start !important;
+    }
+  }
+}
+
+// 卡片佈局
+.card-layout {
+  @include card-style;
+  margin-bottom: spacer(3);
+  
+  .card-header {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    font-weight: 600;
+    
+    h5 {
+      margin-bottom: 0;
+    }
+    
+    .badge {
+      font-size: 0.75em;
+      margin-left: spacer(2);
+    }
+  }
+  
+  .card-body {
+    padding: spacer(4);
+    
+    @include media-breakpoint-down(md) {
+      padding: spacer(3);
+    }
+  }
+}
