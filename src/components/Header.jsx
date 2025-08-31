@@ -26,9 +26,6 @@ const Header = () => {
 							<NavDropdown.Item as={Link} to='/'>
 								傳票批次檢核
 							</NavDropdown.Item>
-							<NavDropdown.Item as={Link} to='/'>
-								商業智慧(BI)
-							</NavDropdown.Item>
 						</NavDropdown>
 					</Nav>
 				</Navbar.Collapse>
