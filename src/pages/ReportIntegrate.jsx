@@ -2,20 +2,20 @@ import React, { useState, useEffect } from "react";
 import { Container, Toast, ToastContainer } from "react-bootstrap";
 
 // Import components
-import Header from "./components/Header.jsx";
-import FileUpload from "./components/FileUpload.jsx";
-import ProcessingTasks from "./components/ProcessingTasks.jsx";
-import ReportsList from "./components/ReportsList.jsx";
-import LoadingSpinner from "./components/LoadingSpinner.jsx";
-import SectionNavigator from "./components/SectionNavigator.jsx";
+import Header from "../components/Header.jsx";
+import FileUpload from "../components/FileUpload.jsx";
+import ProcessingTasks from "../components/ProcessingTasks.jsx";
+import ReportsList from "../components/ReportsList.jsx";
+import LoadingSpinner from "../components/LoadingSpinner.jsx";
+import SectionNavigator from "../components/SectionNavigator.jsx";
 
 // Import services and utils
-import ApiService from "./services/api.jsx";
-import { downloadBlob } from "./utils/fileUtils.jsx";
+import ApiService from "../services/api.jsx";
+import { downloadBlob } from "../utils/fileUtils.jsx";
 
 // 樣式已經在 index.js 中統一載入，這裡不需要重複導入
 
-const App = () => {
+const ReportIntegrate = () => {
 	const [uploadStatus, setUploadStatus] = useState("");
 	const [processingTasks, setProcessingTasks] = useState([]);
 	const [reports, setReports] = useState([]);
@@ -216,4 +216,4 @@ const App = () => {
 	);
 };
 
-export default App;
+export default ReportIntegrate;

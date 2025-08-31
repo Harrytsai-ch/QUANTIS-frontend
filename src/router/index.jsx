@@ -1,11 +1,11 @@
-import { createHashRouter } from 'react-router-dom';
-import App from '../App.jsx';
+import { createHashRouter } from "react-router-dom";
+import ReportIntegrate from "../pages/ReportIntegrate";
 
 const router = createHashRouter([
-  {
-    path: "/",
-    element: <App />,
-  },
+	{
+		path: "/",
+		element: <ReportIntegrate />,
+	},
 ]);
 
 export default router;

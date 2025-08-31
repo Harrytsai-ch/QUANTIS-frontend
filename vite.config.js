@@ -2,11 +2,11 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ command }) => ({
 	// base 的寫法：
 	// base: '/Repository 的名稱/'
 	//這裡記得要改成 /QUANTIS-frontend/
-	base: "/QUANTIS-frontend/",
+	base: command === 'build' ? "/QUANTIS-frontend/" : "/",
 	plugins: [react()],
 	server: {
 		port: 3000,
@@ -23,4 +23,4 @@ export default defineConfig({
 			},
 		},
 	},
-});
+}));
