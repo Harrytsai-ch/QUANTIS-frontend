@@ -7,7 +7,7 @@ const Header = () => {
 			<Container>
 				<Navbar.Brand href='/' className='d-flex align-items-center'>
 					<div className='d-flex align-items-center'>
-						<img src='/common/logo.png' alt='logo' style={{ width: "50px" }} />
+						<img src='./common/logo.png' alt='logo' style={{ width: "50px" }} />
 						<p>Quantis</p>
 					</div>
 				</Navbar.Brand>

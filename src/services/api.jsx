@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:3001/api';
+const API_BASE_URL = import.meta.env.PROD 
+  ? 'https://your-backend-api.herokuapp.com/api'  // 生產環境 - 需要部署後端
+  : 'http://localhost:3001/api';                   // 開發環境
 
 // 建立 axios 實例
 const apiClient = axios.create({
